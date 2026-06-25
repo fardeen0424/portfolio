@@ -17,10 +17,10 @@ export default function ContactSection() {
         {/* Left Side: Premium CTA Content */}
         <div className="md:col-span-7 flex flex-col justify-center items-start text-left gap-6 z-10">
           <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-neutral-800 dark:text-neutral-200 sm:text-4xl">
               Let&apos;s build something great.
             </h2>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-md">
+            <p className="text-muted-foreground md:text-lg lg:text-xl text-balance leading-relaxed max-w-lg">
               Want to collaborate, discuss research, or just have a chat? Shoot me a message on LinkedIn. I am always open to interesting opportunities and discussions.
             </p>
           </div>
@@ -30,7 +30,7 @@ export default function ContactSection() {
               href={DATA.contact.social.LinkedIn.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-6 py-3.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-blue-500/20"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff4300] hover:bg-[#e03a00] text-white font-medium text-sm px-8 py-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#ff4300]/20"
             >
               <Linkedin className="w-4 h-4" />
               Connect on LinkedIn
