@@ -263,7 +263,7 @@ export default function Navbar() {
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.25 }}
-                      className="border-t border-neutral-800 dark:border-neutral-200 mt-3 pt-3 flex items-center justify-between px-2"
+                      className="border-t border-neutral-800 dark:border-neutral-200 mt-3 pt-3 pb-2 flex items-center justify-between px-2"
                     >
                       <span className="text-xs text-neutral-400 dark:text-neutral-500 font-medium">Appearance</span>
                       <Switch />
