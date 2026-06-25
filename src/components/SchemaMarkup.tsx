@@ -34,12 +34,57 @@ export default function SchemaMarkup() {
       "name": "Mercurion AI, Inc.",
       "url": "https://mercurion.ai"
     },
+    "affiliation": [
+      {
+        "@type": "Organization",
+        "name": "Mercurion AI, Inc.",
+        "url": "https://mercurion.ai"
+      },
+      {
+        "@type": "Organization",
+        "name": "Insight Hospital and Medical Center",
+        "url": "https://www.insightchicago.com/"
+      },
+      {
+        "@type": "Organization",
+        "name": "Accenture",
+        "url": "https://accenture.com"
+      },
+      {
+        "@type": "Organization",
+        "name": "FX Pattern Pro, LLC"
+      },
+      {
+        "@type": "Organization",
+        "name": "SAP",
+        "url": "https://sap.com"
+      },
+      {
+        "@type": "Organization",
+        "name": "Infosys",
+        "url": "https://infosys.com"
+      }
+    ],
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "University of Cincinnati",
       "url": "https://www.uc.edu",
       "sameAs": "https://en.wikipedia.org/wiki/University_of_Cincinnati"
     },
+    "knowsLanguage": [
+      {
+        "@type": "Language",
+        "name": "English"
+      },
+      {
+        "@type": "Language",
+        "name": "Telugu"
+      },
+      {
+        "@type": "Language",
+        "name": "Hindi"
+      }
+    ],
     "knowsAbout": [
       "Artificial Intelligence",
       "Deep Learning",
@@ -119,6 +164,26 @@ export default function SchemaMarkup() {
         "description": "A study on boundary cases, hallucination rates, and mechanical limitations of autoregressive models."
       },
       {
+        "@type": "Book",
+        "name": "Rethinking Intelligence in Machines",
+        "author": {
+          "@type": "Person",
+          "name": "Fardeen NB"
+        },
+        "datePublished": "2025",
+        "description": "A book exploring cognitive architecture, intelligence limits, and computational paradigms of machine intelligence."
+      },
+      {
+        "@type": "Book",
+        "name": "Engineering LLMs: Design, Optimization, and Deployment",
+        "author": {
+          "@type": "Person",
+          "name": "Fardeen NB"
+        },
+        "datePublished": "2024",
+        "description": "A comprehensive guide on engineering foundations, optimization systems, and deployment workflows for LLMs."
+      },
+      {
         "@type": "ScholarlyArticle",
         "name": "THE ATTENTION DISTANCE PROBLEM: THEORETICAL ANALYSIS OF LONG-RANGE DEPENDENCIES IN TRANSFORMERS",
         "author": ["NB Fardeen", "NB Sameer"],
@@ -185,18 +250,6 @@ export default function SchemaMarkup() {
         "author": ["NB Fardeen", "NB Sameer"],
         "datePublished": "2025",
         "journal": "Power System Protection and Control"
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "Rethinking Intelligence in Machines",
-        "author": ["NB Fardeen"],
-        "datePublished": "2025"
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "Engineering LLMs: Design, Optimization, and Deployment",
-        "author": ["NB Fardeen"],
-        "datePublished": "2024"
       }
     ]
   };
