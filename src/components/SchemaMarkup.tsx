@@ -141,6 +141,12 @@ export default function SchemaMarkup() {
       },
       {
         "@type": "ScholarlyArticle",
+        "name": "From BERT To GPT-3: Architectural Innovations and Emergent Capabilities in Large Language Models",
+        "author": ["F NB", "NB Sameer"],
+        "datePublished": "2023"
+      },
+      {
+        "@type": "ScholarlyArticle",
         "name": "Attention-Guided Pruning: A Systematic Approach for Compressing Transformer Models",
         "author": ["NB Fardeen", "NB Sameer"],
         "datePublished": "2022",
@@ -157,6 +163,39 @@ export default function SchemaMarkup() {
         "@type": "ScholarlyArticle",
         "name": "EffiLLM: A Comprehensive Framework for Benchmarking and Optimizing Large Language Models in Resource-Constrained Environments",
         "author": ["NB Fardeen", "NB Sameer"],
+        "datePublished": "2024"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "A Comparative Analysis of Dimension Reduction Techniques for High-Dimensional Classification Tasks",
+        "author": ["NB Fardeen", "NB Sameer"],
+        "datePublished": "2022",
+        "journal": "International Journal of Intelligent Systems and Applications in Engineering"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Automatic Classification of Leukemia Cells via Flow Cytometry and Mitral Regurgitation Detection Using Machine Learning Algorithms",
+        "author": ["NB Fardeen", "NB Sameer"],
+        "datePublished": "2021",
+        "journal": "Power System Protection and Control"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "BEYOND THE PIXEL: ASSESSING REAL-TIME OBJECT DETECTION MODELS IN LOW-VISIBILITY AUTONOMOUS DRIVING ENVIRONMENTS",
+        "author": ["NB Fardeen", "NB Sameer"],
+        "datePublished": "2025",
+        "journal": "Power System Protection and Control"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Rethinking Intelligence in Machines",
+        "author": ["NB Fardeen"],
+        "datePublished": "2025"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Engineering LLMs: Design, Optimization, and Deployment",
+        "author": ["NB Fardeen"],
         "datePublished": "2024"
       }
     ]
