@@ -1,0 +1,145 @@
+{
+  "totalCitations": 119,
+  "hIndex": 8,
+  "i10Index": 8,
+  "citationHistory": [
+    {
+      "year": "2021",
+      "citations": 3
+    },
+    {
+      "year": "2022",
+      "citations": 12
+    },
+    {
+      "year": "2023",
+      "citations": 31
+    },
+    {
+      "year": "2024",
+      "citations": 15
+    },
+    {
+      "year": "2025",
+      "citations": 24
+    },
+    {
+      "year": "2026",
+      "citations": 30
+    }
+  ],
+  "publications": [
+    {
+      "title": "THE ATTENTION DISTANCE PROBLEM: THEORETICAL ANALYSIS OF LONG-RANGE DEPENDENCIES IN TRANSFORMERS",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Dianli Xitong Baohu yu Kongzhi/Power System Protection and Control",
+      "citations": "20",
+      "year": "2024"
+    },
+    {
+      "title": "Emergent Complex Reasoning Through Compositional Data Augmentation: How Synthetic Task Diversity Shapes Cognitive Capabilities in Large Language Models",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Journal of Information Systems Engineering &amp; Management",
+      "citations": "15",
+      "year": "2023"
+    },
+    {
+      "title": "Inside Large Language Models From Tokens to Intelligence.",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "13",
+      "year": "2025"
+    },
+    {
+      "title": "The Fragility of AI Reasoning Systems",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "12",
+      "year": "2026"
+    },
+    {
+      "title": "Prompt Engineering Paradigms: Optimizing LLM Performance Through Strategic Input Design",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Journal of Information Systems Engineering & Management",
+      "citations": "11",
+      "year": "2023"
+    },
+    {
+      "title": "From BERT To GPT-3: Architectural Innovations and Emergent Capabilities in Large Language Models",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Journal of Information Systems Engineering & Management",
+      "citations": "11",
+      "year": "2023"
+    },
+    {
+      "title": "Attention-Guided Pruning: A Systematic Approach for Compressing Transformer Models",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "International Journal of Intelligent Systems and Applications in Engineering",
+      "citations": "10",
+      "year": "2022"
+    },
+    {
+      "title": "Why Language Models Fail",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "10",
+      "year": "2026"
+    },
+    {
+      "title": "Artificial Intelligence-Based Real-Time Vision System for Autonomous Vehicles with Lane and Object Awareness",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Journal of Information Systems Engineering & Management",
+      "citations": "6",
+      "year": "2023"
+    },
+    {
+      "title": "EffiLLM: A Comprehensive Framework for Benchmarking and Optimizing Large Language Models in Resource-Constrained Environments",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "International Journal of Intelligent Systems and Applications in Engineering",
+      "citations": "5",
+      "year": "2024"
+    },
+    {
+      "title": "A Comparative Analysis of Dimension Reduction Techniques for High-Dimensional Classification Tasks",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "International Journal of Intelligent Systems and Applications in Engineering",
+      "citations": "3",
+      "year": "2022"
+    },
+    {
+      "title": "Automatic Classification of Leukemia Cells via Flow Cytometry and Mitral Regurgitation Detection Using Machine Learning Algorithms",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Power System Protection and Control",
+      "citations": "3",
+      "year": "2021"
+    },
+    {
+      "title": "The Fragility of Al Reasoning Systems.",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "",
+      "year": "2026"
+    },
+    {
+      "title": "BEYOND THE PIXEL: ASSESSING REAL-TIME OBJECT DETECTION MODELS IN LOW-VISIBILITY AUTONOMOUS DRIVING ENVIRONMENTS",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Power System Protection and Control",
+      "citations": "",
+      "year": "2025"
+    },
+    {
+      "title": "Rethinking Intelligence in Machines.",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "",
+      "year": "2025"
+    },
+    {
+      "title": "Engineering LLMs Design, Optimization, and Deployment",
+      "authors": "NB Fardeen",
+      "journal": "Google Books",
+      "citations": "",
+      "year": "2024"
+    }
+  ]
+}

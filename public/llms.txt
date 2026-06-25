@@ -1,0 +1,19 @@
+# Fardeen NB Portfolio
+
+> Semantic index of Fardeen NB's AI research, publications, open-source projects, and professional background.
+
+Fardeen NB is an AI Scientist, Deep Learning Researcher, and Tech Entrepreneur specializing in pre-training and post-training large language models (LLMs) from scratch, transformer architectures, and model compression.
+
+## Details & Sections
+- [Biography](https://fardeen.net/#about): Overview of Fardeen's journey from co-founding FX Pattern Pro at 18 to research on transformer mechanics.
+- [Work Experience](https://fardeen.net/#work): Career history including Insight Hospital (Full Stack AI Engineer), Accenture (AI Engineer), FX Pattern Pro (AI Co-founder), SAP, and Infosys.
+- [Pretrained LLM](https://fardeen.net/#model): Technical specifications of the Neutrino-Instruct-7B language model.
+- [Publications & Research](https://fardeen.net/#scholar): Citations and research index on transformer models, long-range dependencies, and emergent reasoning.
+
+## Verified Links
+- [Official Website](https://fardeen.net)
+- [Google Scholar](https://scholar.google.com/citations?user=RyRxxs8AAAAJ)
+- [Hugging Face](https://huggingface.co/neuralcrew/neutrino-instruct)
+- [ResearchGate](https://www.researchgate.net/profile/Fardeen-Nb)
+- [GitHub](https://github.com/fardeen0424)
+- [LinkedIn](https://linkedin.com/in/fardeen0424)
