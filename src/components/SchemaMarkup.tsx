@@ -212,7 +212,15 @@ export default function SchemaMarkup() {
       "Model Deployment",
       "Computer Vision",
       "Time-Series Forecasting",
-      "Data Augmentation"
+      "Data Augmentation",
+      "Low-Rank Adaptation (LoRA)",
+      "Parameter-Efficient Fine-Tuning (PEFT)",
+      "GGUF Quantization",
+      "Model Distillation",
+      "Autoregressive Models",
+      "Model Optimization",
+      "Distributed Training",
+      "High-Performance Computing (HPC)"
     ],
     "sameAs": [
       "https://scholar.google.com/citations?user=RyRxxs8AAAAJ",
