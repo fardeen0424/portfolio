@@ -102,7 +102,8 @@ export default function SchemaMarkup() {
       {
         "@type": "Organization",
         "name": "Power System Protection and Control (Journal)",
-        "url": "http://www.pspac.info",
+        "url": "https://pspac.info/index.php/dlbh/about/editorialTeam",
+        "sameAs": "http://www.pspac.info",
         "description": "Reviewer Board Member"
       }
     ],
@@ -219,7 +220,9 @@ export default function SchemaMarkup() {
       "https://www.researchgate.net/profile/Fardeen-Nb",
       "https://github.com/fardeen0424",
       "https://linkedin.com/in/fardeen0424",
-      "https://x.com/fardeen0424"
+      "https://x.com/fardeen0424",
+      "https://orcid.org/0009-0005-4765-1382",
+      "https://pspac.info/index.php/dlbh/about/editorialTeam"
     ],
     "creator": [
       {
