@@ -15,10 +15,24 @@ export default function SchemaMarkup() {
       "F. NB",
       "NB Fardeen"
     ],
-    "birthDate": "2001-04-24",
+    "birthDate": "2002-04-24",
     "birthPlace": {
       "@type": "Place",
-      "name": "India"
+      "name": "Vijayawada, India"
+    },
+    "height": {
+      "@type": "QuantitativeValue",
+      "value": 180,
+      "unitCode": "CMT"
+    },
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Ohio, United States"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Ohio",
+      "addressCountry": "United States"
     },
     "url": "https://fardeen.net",
     "image": "https://fardeen.net/me.png",
@@ -27,18 +41,18 @@ export default function SchemaMarkup() {
     "gender": "http://schema.org/Male",
     "nationality": {
       "@type": "Country",
-      "name": "United States"
+      "name": "India"
     },
     "worksFor": {
       "@type": "Organization",
       "name": "Mercurion AI, Inc.",
-      "url": "https://mercurion.ai"
+      "url": "https://mercurion.co"
     },
     "affiliation": [
       {
         "@type": "Organization",
         "name": "Mercurion AI, Inc.",
-        "url": "https://mercurion.ai"
+        "url": "https://mercurion.co"
       },
       {
         "@type": "Organization",
@@ -131,6 +145,7 @@ export default function SchemaMarkup() {
         }
       }
     ],
+    "email": "hello@fardeen.net",
     "knowsLanguage": [
       {
         "@type": "Language",
@@ -158,7 +173,17 @@ export default function SchemaMarkup() {
       "Neural Network Pruning",
       "Attention Mechanism",
       "Compositional Data Augmentation",
-      "Algorithmic Pattern Identification"
+      "Algorithmic Pattern Identification",
+      "Machine Learning",
+      "Software Engineering",
+      "Distributed Systems",
+      "Full-Stack Development",
+      "API Design",
+      "PyTorch",
+      "Model Deployment",
+      "Computer Vision",
+      "Time-Series Forecasting",
+      "Data Augmentation"
     ],
     "sameAs": [
       "https://scholar.google.com/citations?user=RyRxxs8AAAAJ",
