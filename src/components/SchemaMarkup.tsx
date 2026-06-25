@@ -71,6 +71,26 @@ export default function SchemaMarkup() {
       "url": "https://www.uc.edu",
       "sameAs": "https://en.wikipedia.org/wiki/University_of_Cincinnati"
     },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Master of Engineering in Artificial Intelligence",
+        "credentialCategory": "degree",
+        "educationalLevel": "Master's degree",
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Artificial Intelligence"
+          }
+        ],
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "University of Cincinnati",
+          "url": "https://www.uc.edu",
+          "sameAs": "https://en.wikipedia.org/wiki/University_of_Cincinnati"
+        }
+      }
+    ],
     "knowsLanguage": [
       {
         "@type": "Language",
