@@ -89,6 +89,46 @@ export default function SchemaMarkup() {
           "url": "https://www.uc.edu",
           "sameAs": "https://en.wikipedia.org/wiki/University_of_Cincinnati"
         }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certified Artificial Intelligence Scientist (CAIS™)",
+        "credentialCategory": "certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "United States Artificial Intelligence Institute (USAII®)",
+          "url": "https://www.usaii.org"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "NVIDIA-Certified Associate: Generative AI and LLMs (NCA-GENL)",
+        "credentialCategory": "certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "NVIDIA Corporation",
+          "url": "https://www.nvidia.com"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "NVIDIA-Certified Associate: Generative AI and Multimodal (NCA-GENM)",
+        "credentialCategory": "certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "NVIDIA Corporation",
+          "url": "https://www.nvidia.com"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "NVIDIA-Certified Associate: AI Infrastructure and Operations (NCA-AIIO)",
+        "credentialCategory": "certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "NVIDIA Corporation",
+          "url": "https://www.nvidia.com"
+        }
       }
     ],
     "knowsLanguage": [
