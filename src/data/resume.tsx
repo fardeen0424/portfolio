@@ -13,7 +13,7 @@ import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 export const DATA = {
   name: "Fardeen NB",
   initials: "FNB",
-  url: "https://dillion.io",
+  url: "https://fardeen.net",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
@@ -67,16 +67,16 @@ export const DATA = {
       },
       X: {
         name: "X",
-        url: "https://dub.sh/dillion-twitter",
+        url: "https://x.com/fardeen0424",
         icon: Icons.x,
 
         navbar: true,
       },
       Youtube: {
         name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
+        url: "https://youtube.com",
         icon: Icons.youtube,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
@@ -269,7 +269,7 @@ export const DATA = {
         },
         {
           type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
+          href: "https://github.com/fardeen0424/llm.report",
           icon: <Icons.github className="size-3" />,
         },
       ],
@@ -423,7 +423,7 @@ export const DATA = {
         {
           title: "Client Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/RTSPClient",
+          href: "https://github.com/fardeen0424/RTSPClient",
         },
       ],
     },
@@ -510,7 +510,7 @@ export const DATA = {
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/genecis",
+          href: "https://github.com/fardeen0424/genecis",
         },
       ],
     },
@@ -541,7 +541,7 @@ export const DATA = {
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/pocketdoc-react-native",
+          href: "https://github.com/fardeen0424/pocketdoc-react-native",
         },
       ],
     },
@@ -576,7 +576,7 @@ export const DATA = {
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/pocketdoc-react-native",
+          href: "https://github.com/fardeen0424/pocketdoc-react-native",
         },
       ],
     },
@@ -592,7 +592,7 @@ export const DATA = {
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/earthwatch",
+          href: "https://github.com/fardeen0424/earthwatch",
         },
       ],
     },
@@ -609,7 +609,7 @@ export const DATA = {
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/threejs-planes",
+          href: "https://github.com/fardeen0424/threejs-planes",
         },
       ],
     },
@@ -649,7 +649,7 @@ export const DATA = {
         {
           title: "Source (Mobile)",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/human-huntr-react-native",
+          href: "https://github.com/fardeen0424/human-huntr-react-native",
         },
         {
           title: "Source (API)",
