@@ -85,6 +85,34 @@ export default function SchemaMarkup() {
       "url": "https://www.uc.edu",
       "sameAs": "https://en.wikipedia.org/wiki/University_of_Cincinnati"
     },
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Institute of Electrical and Electronics Engineers (IEEE)",
+        "url": "https://www.ieee.org",
+        "sameAs": "https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers",
+        "description": "Senior Member"
+      },
+      {
+        "@type": "Organization",
+        "name": "NeuralCrew",
+        "url": "https://github.com/neuralcrew",
+        "description": "Founder & Core Engineer"
+      },
+      {
+        "@type": "Organization",
+        "name": "Power System Protection and Control (Journal)",
+        "url": "http://www.pspac.info",
+        "description": "Reviewer Board Member"
+      }
+    ],
+    "colleague": [
+      {
+        "@type": "Person",
+        "name": "NB Sameer",
+        "jobTitle": "Researcher"
+      }
+    ],
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
