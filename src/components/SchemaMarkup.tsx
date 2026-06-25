@@ -34,6 +34,23 @@ export default function SchemaMarkup() {
       "addressRegion": "Ohio",
       "addressCountry": "United States"
     },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "h-index",
+        "value": 8
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "i10-index",
+        "value": 8
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Total Citations",
+        "value": 119
+      }
+    ],
     "url": "https://fardeen.net",
     "image": "https://fardeen.net/me.png",
     "jobTitle": "Artificial Intelligence Scientist",
