@@ -112,6 +112,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />

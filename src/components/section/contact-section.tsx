@@ -11,7 +11,7 @@ export default function ContactSection() {
       </div>
 
       {/* Main Card */}
-      <div className="border rounded-2xl bg-background/50 dark:bg-neutral-950/50 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center text-center gap-6 p-8 md:p-12 shadow-xl dark:shadow-2xl/40">
+      <div className="border rounded-2xl bg-background/50 dark:bg-neutral-950/50 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center text-center gap-6 py-16 md:py-20 px-8 md:px-12">
         
         {/* Content Container */}
         <div className="flex flex-col items-center gap-6 z-10 max-w-xl">
