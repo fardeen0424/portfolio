@@ -29,7 +29,7 @@ export default function ContactSection() {
               href={DATA.contact.social.LinkedIn.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff4300] hover:bg-[#e03a00] text-white font-medium text-sm px-8 py-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#ff4300]/20"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff4300] hover:bg-[#e03a00] text-white font-medium text-sm px-8 py-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <Linkedin className="w-4 h-4" />
               Connect on LinkedIn
