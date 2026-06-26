@@ -8,7 +8,7 @@ const outputPath = path.join(__dirname, '../src/data/scholar.json');
 if (!fs.existsSync(htmlPath)) {
   console.log("No scholar HTML file found, creating empty fallback");
   fs.writeFileSync(outputPath, JSON.stringify({
-    totalCitations: 119,
+    totalCitations: 124,
     hIndex: 8,
     i10Index: 8,
     citationHistory: [
@@ -34,7 +34,7 @@ while ((stdMatch = stdRegex.exec(content)) !== null) {
   stdValues.push(stdMatch[1].trim());
 }
 
-const totalCitations = parseInt(stdValues[0]) || 119;
+const totalCitations = parseInt(stdValues[0]) || 124;
 const hIndex = parseInt(stdValues[2]) || 8;
 const i10Index = parseInt(stdValues[4]) || 8;
 

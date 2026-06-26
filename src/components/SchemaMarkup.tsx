@@ -1,5 +1,6 @@
 import React from "react";
 import { DATA } from "@/data/resume";
+import scholarData from "@/data/scholar.json";
 
 export default function SchemaMarkup() {
   const schema = {
@@ -38,17 +39,17 @@ export default function SchemaMarkup() {
       {
         "@type": "PropertyValue",
         "name": "h-index",
-        "value": 8
+        "value": scholarData.hIndex
       },
       {
         "@type": "PropertyValue",
         "name": "i10-index",
-        "value": 8
+        "value": scholarData.i10Index
       },
       {
         "@type": "PropertyValue",
         "name": "Total Citations",
-        "value": 119
+        "value": scholarData.totalCitations
       }
     ],
     "url": "https://fardeen.net",
