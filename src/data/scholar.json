@@ -1,11 +1,11 @@
 {
-  "totalCitations": 119,
+  "totalCitations": 124,
   "hIndex": 8,
   "i10Index": 8,
   "citationHistory": [
     {
       "year": "2021",
-      "citations": 3
+      "citations": 7
     },
     {
       "year": "2022",
@@ -25,7 +25,7 @@
     },
     {
       "year": "2026",
-      "citations": 30
+      "citations": 31
     }
   ],
   "publications": [
