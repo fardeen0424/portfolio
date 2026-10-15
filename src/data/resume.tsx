@@ -14,14 +14,14 @@ export const DATA = {
   name: "Fardeen NB",
   initials: "FNB",
   url: "https://fardeen.net",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  location: "Cincinnati, OH",
+  locationLink: "https://www.google.com/maps/place/Cincinnati,+OH",
   description:
-    "AI Scientist & Deep-Tech Entrepreneur. I founded an algorithmic fintech venture at 18, transitioned into core deep learning research, and specialized in pre-training large language models from scratch.",
+    "AI Engineer who builds production LLM systems and trains models from scratch. I have shipped six AI features into a hospital's revenue cycle, and I pre-trained Neutrino-Instruct, an open 7B-parameter language model.",
   summary:
-    "My path into artificial intelligence started from a foundation of engineering execution and entrepreneurship. In 2019, at just 18 years old, I founded FX Pattern Pro. Driven by an interest in market prediction and pattern mapping, I built and launched this desktop-based fintech application to help quantitative traders identify algorithmic pattern structures—a project that served as my first major experiment in large-scale data mapping and predictable system logic.\n\n" +
-    "Realizing that the true ceiling of algorithmic logic lay inside advanced neural network frameworks, I pivoted entirely into foundational deep learning research. I pursued a Master of Engineering in Artificial Intelligence from the University of Cincinnati, specializing in the core mechanics of transformer architectures.\n\n" +
-    "Today, my work bypasses superficial API integrations to focus on how models process high-dimensional information. I serve as an AI Scientist at Mercurion AI and lead the independent engineering initiative NeuralCrew. Under this banner, I achieved the complex task of pre-training and post-training a 7-billion parameter language model, Neutrino-Instruct, entirely from scratch to champion open-source data curation over raw computing scale.",
+    "I started out as a builder. In 2019, as a teenager, I founded FX Pattern Pro, a desktop application that helps quantitative traders detect algorithmic chart patterns. Shipping it taught me how to turn noisy, high-volume market data into software people could trust.\n\n" +
+    "That work pulled me into machine learning. At Accenture, I fine-tuned enterprise language models and built production retrieval and evaluation pipelines. I then went deeper into the fundamentals with a Master of Engineering in Artificial Intelligence at the University of Cincinnati, where my research on attention and long-range dependencies in transformers led to peer-reviewed publications.\n\n" +
+    "Today I build production AI at Insight Hospital and Medical Center, where I have shipped six AI features across the hospital's revenue cycle, from medical coding to claims appeals and patient calls. I also lead NeuralCrew, my independent research effort, where I pre-trained and post-trained Neutrino-Instruct, a 7-billion-parameter language model, from scratch to test how far careful curation of open data can go without frontier-scale compute.",
   avatarUrl: "/me.png",
   skills: [
     { name: "PyTorch", icon: Icons.pytorch },
@@ -48,8 +48,8 @@ export const DATA = {
     { href: "/", icon: HomeIcon, label: "Home" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "fardeen0424@gmail.com",
+    huggingface: "https://huggingface.co/neuralcrew",
     social: {
       GitHub: {
         name: "GitHub",
@@ -65,22 +65,15 @@ export const DATA = {
 
         navbar: true,
       },
-      X: {
-        name: "X",
-        url: "https://x.com/fardeen0424",
-        icon: Icons.x,
-
-        navbar: true,
-      },
-      Youtube: {
-        name: "Youtube",
-        url: "https://youtube.com",
-        icon: Icons.youtube,
+      HuggingFace: {
+        name: "Hugging Face",
+        url: "https://huggingface.co/neuralcrew",
+        icon: Icons.huggingface,
         navbar: false,
       },
       email: {
-        name: "Send Email",
-        url: "#",
+        name: "Email",
+        url: "mailto:fardeen0424@gmail.com",
         icon: Icons.email,
 
         navbar: false,
@@ -93,93 +86,80 @@ export const DATA = {
       company: "Insight Hospital and Medical Center",
       href: "https://www.insightchicago.com/",
       badges: [],
-      location: "Chicago, IL",
+      location: "Chicago, Illinois · Hybrid",
       title: "Full Stack AI Engineer",
       logoUrl: "/insight.jpg",
-      start: "Jan 2026",
+      start: "Jun 2025",
       end: "Present",
       description:
-        "Engineered full-stack artificial intelligence solutions and predictive models for clinical data extraction and hospital care workflow optimization.",
+        "• Owned and shipped 6 production AI features across the hospital's Revenue Cycle Management (RCM) platform, automating end-to-end medical coding, claims appeals, prior authorization, and patient communications.\n" +
+        "• Fine-tuned specialized LLMs to extract and predict ICD-10 and CPT medical codes directly from clinical documentation, implementing a human-in-the-loop validation pipeline for certified medical coders prior to claim submission.\n" +
+        "• Built a RAG-powered claims appeal agent that synthesizes payer coverage policies with EDI 837 and 835 claim transaction files to draft denial appeal letters, automatically routing low-confidence drafts to human reviewers.\n" +
+        "• Developed HIPAA-compliant autonomous agents for prior authorization submissions and payer claim follow-ups, replacing two manual telephone workflows with strict confidence thresholds and validation guardrails.\n" +
+        "• Designed a real-time inbound call-routing pipeline (STT, LLM, and TTS over RingCentral) that classifies patient intent and routes inquiries to appropriate clinical departments without operator intervention.\n" +
+        "• Engineered conversational voice and SMS agents with ultra-low response latency to automate appointment reminders and patient communications, eliminating repetitive front-desk phone outreach.\n" +
+        "• Developed core frontend and backend services across the hospital's broader RCM infrastructure using modern full-stack web technologies.",
     },
     {
       company: "Accenture",
       href: "https://accenture.com",
       badges: [],
-      location: "India",
+      location: "India · Hybrid",
       title: "Artificial Intelligence Engineer",
       logoUrl: "/accenture_logo.jpg",
       start: "Jun 2022",
       end: "Aug 2024",
       description:
-        "Fine-tuned enterprise large language models for document summarization, engineered RAG search pipelines, and built accuracy evaluation frameworks.",
-    },
-    {
-      company: "FX Pattern Pro, LLC",
-      href: "#",
-      badges: [],
-      location: "Remote",
-      title: "Artificial Intelligence Engineer, Co-Founder",
-      logoUrl: "/fxpatternpro.jpg",
-      start: "Jun 2019",
-      end: "Aug 2024",
-      description:
-        "Co-founded and engineered AI trading systems, time-series forecasting models, and NLP sentiment scrapers for algorithmic market prediction.",
-    },
-    {
-      company: "SAP",
-      href: "https://sap.com",
-      badges: [],
-      location: "India",
-      title: "Machine Learning Engineer",
-      logoUrl: "/sap_logo.jpg",
-      start: "May 2021",
-      end: "Jul 2021",
-      description:
-        "Trained automated invoice extraction and classification models using custom domain NLP word and document embeddings.",
-    },
-    {
-      company: "Infosys",
-      href: "https://infosys.com",
-      badges: [],
-      location: "India",
-      title: "Machine Learning Engineer",
-      logoUrl: "/infosys_logo.jpg",
-      start: "May 2020",
-      end: "Aug 2020",
-      description:
-        "Developed B2B intent recognition support pipelines and optimized transformer-based chatbots using prompt engineering.",
+        "• Fine-tuned enterprise large language models (LLMs) for domain-specific knowledge extraction, document summarization, and semantic search across client data lakes.\n" +
+        "• Engineered production Retrieval-Augmented Generation (RAG) pipelines integrating scalable vector databases, hybrid sparse-dense retrieval, and semantic reranking.\n" +
+        "• Built comprehensive LLM evaluation and benchmarking frameworks measuring inference accuracy, factual consistency, hallucination rates, and system latency in production.",
     },
   ],
   education: [
     {
       school: "University of Cincinnati",
       href: "https://www.uc.edu",
-      degree: "Master's degree, Artificial Intelligence",
+      degree: "Master of Engineering, Artificial Intelligence",
+      location: "Cincinnati, OH",
       logoUrl: "/university_of_cincinnati_logo.jpg",
       start: "Aug 2024",
-      end: "Aug 2025",
+      end: "May 2026",
       description:
-        "Pursuing advanced studies in artificial intelligence with a focus on theory and practical applications.\n\n" +
-        "Key Areas of Study:\n" +
-        "→ Machine Learning\n" +
-        "→ Deep Learning\n" +
-        "→ Reinforcement Learning\n" +
-        "→ Natural Language Processing\n" +
-        "→ Computer Vision\n" +
-        "→ Robotics\n" +
-        "→ Knowledge Representation\n" +
-        "→ Expert Systems\n" +
-        "→ Neural Networks\n" +
-        "→ Generative AI\n" +
-        "→ Transformers\n" +
-        "→ Large Language Models\n" +
-        "→ Data Mining\n" +
-        "→ Predictive Analytics\n" +
-        "→ AI Ethics & Fairness\n" +
-        "→ AI Deployment & Cloud Integration\n" +
-        "→ Optimization Algorithms\n" +
-        "→ Multi-Agent Systems\n" +
-        "→ AI Research & Development",
+        "• Specialized in foundational deep learning, transformer mechanics, attention optimization, and distributed neural network pre-training.\n" +
+        "• Completed advanced graduate coursework in Deep Learning, Reinforcement Learning, Natural Language Processing, Computer Vision, and Convex Optimization.\n" +
+        "• Conducted graduate research on attention distance bottlenecks and long-range sequence dependencies in transformer architectures, leading to peer-reviewed publications.",
+    },
+  ],
+  certifications: [
+    {
+      title: "Certified Artificial Intelligence Scientist",
+      issuer: "United States Artificial Intelligence Institute",
+      issued: "Jun 2025",
+      logoUrl: "/usaii_logo.jpg",
+      href: "https://www.dgbadge.com/certified/member/7039838265",
+      description:
+        "• Validated competencies across deep learning architectures, predictive modeling, generative systems, and enterprise AI lifecycle engineering.\n" +
+        "• Demonstrated mastery in architecting scalable machine learning pipelines using TensorFlow, Keras, and neural optimization methodologies.",
+    },
+    {
+      title: "NVIDIA-Certified Associate: Generative AI LLMs",
+      issuer: "NVIDIA",
+      issued: "Apr 2025",
+      logoUrl: "/nvidia_logo.jpg",
+      href: "https://www.credly.com/badges/8b4171be-723c-4e07-b659-b7d087bb3c3f",
+      description:
+        "• Certified in large language model foundations, transformer mechanics, attention dynamics, and parameter-efficient fine-tuning (PEFT/LoRA).\n" +
+        "• Validated proficiency in designing high-throughput inference pipelines, prompt engineering strategies, and production RAG workflows using NVIDIA accelerated compute.",
+    },
+    {
+      title: "NVIDIA-Certified Associate: Generative AI Multimodal",
+      issuer: "NVIDIA",
+      issued: "May 2025",
+      logoUrl: "/nvidia_logo.jpg",
+      href: "https://www.credly.com/badges/8f7db6fe-e7b4-42b9-96c9-d14fb3f7282e",
+      description:
+        "• Certified in multimodal architecture design, vision-language model (VLM) integration, cross-attention alignment, and diffusion generative paradigms.\n" +
+        "• Demonstrated capabilities in constructing multi-sensor data pipelines, optimizing cross-modal embeddings, and deploying accelerated inference on NVIDIA systems.",
     },
   ],
   projects: [

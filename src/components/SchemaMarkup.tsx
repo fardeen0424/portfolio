@@ -28,12 +28,13 @@ export default function SchemaMarkup() {
     },
     "homeLocation": {
       "@type": "Place",
-      "name": "Ohio, United States"
+      "name": "Cincinnati, Ohio, United States"
     },
     "address": {
       "@type": "PostalAddress",
-      "addressRegion": "Ohio",
-      "addressCountry": "United States"
+      "addressLocality": "Cincinnati",
+      "addressRegion": "OH",
+      "addressCountry": "US"
     },
     "additionalProperty": [
       {
@@ -54,8 +55,8 @@ export default function SchemaMarkup() {
     ],
     "url": "https://fardeen.net",
     "image": "https://fardeen.net/me.png",
-    "jobTitle": "Artificial Intelligence Scientist",
-    "description": "Fardeen NB (Fardeen Noor Basha) is an Artificial Intelligence Scientist at Mercurion AI, a deep learning researcher specializing in transformer architectures and model compression, and the creator of the Neutrino-Instruct LLM.",
+    "jobTitle": "AI Engineer",
+    "description": "Fardeen NB (Fardeen Noor Basha) is an AI Engineer based in Cincinnati, Ohio, who builds production LLM systems and trains models from scratch. He has shipped six AI features into the revenue cycle at Insight Hospital and Medical Center, pre-trained and post-trained Neutrino-Instruct, an open 7-billion-parameter language model, and publishes research on long-range dependencies in transformers.",
     "gender": "http://schema.org/Male",
     "nationality": {
       "@type": "Country",
@@ -63,15 +64,10 @@ export default function SchemaMarkup() {
     },
     "worksFor": {
       "@type": "Organization",
-      "name": "Mercurion AI, Inc.",
-      "url": "https://mercurion.co"
+      "name": "Insight Hospital and Medical Center",
+      "url": "https://www.insightchicago.com/"
     },
     "affiliation": [
-      {
-        "@type": "Organization",
-        "name": "Mercurion AI, Inc.",
-        "url": "https://mercurion.co"
-      },
       {
         "@type": "Organization",
         "name": "Insight Hospital and Medical Center",
@@ -84,17 +80,8 @@ export default function SchemaMarkup() {
       },
       {
         "@type": "Organization",
-        "name": "FX Pattern Pro, LLC"
-      },
-      {
-        "@type": "Organization",
-        "name": "SAP",
-        "url": "https://sap.com"
-      },
-      {
-        "@type": "Organization",
-        "name": "Infosys",
-        "url": "https://infosys.com"
+        "name": "FX Pattern Pro",
+        "description": "Founder"
       }
     ],
     "alumniOf": {
@@ -115,7 +102,7 @@ export default function SchemaMarkup() {
         "@type": "Organization",
         "name": "NeuralCrew",
         "url": "https://github.com/neuralcrew",
-        "description": "Founder & Core Engineer"
+        "description": "Founder and lead researcher"
       },
       {
         "@type": "Organization",
@@ -180,19 +167,9 @@ export default function SchemaMarkup() {
           "name": "NVIDIA Corporation",
           "url": "https://www.nvidia.com"
         }
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "NVIDIA-Certified Associate: AI Infrastructure and Operations (NCA-AIIO)",
-        "credentialCategory": "certification",
-        "recognizedBy": {
-          "@type": "Organization",
-          "name": "NVIDIA Corporation",
-          "url": "https://www.nvidia.com"
-        }
       }
     ],
-    "email": "hello@fardeen.net",
+    "email": "mailto:fardeen0424@gmail.com",
     "knowsLanguage": [
       {
         "@type": "Language",
@@ -241,12 +218,10 @@ export default function SchemaMarkup() {
       "High-Performance Computing (HPC)"
     ],
     "sameAs": [
-      "https://scholar.google.com/citations?user=RyRxxs8AAAAJ",
       "https://huggingface.co/neuralcrew/neutrino-instruct",
       "https://www.researchgate.net/profile/Fardeen-Nb",
       "https://github.com/fardeen0424",
       "https://linkedin.com/in/fardeen0424",
-      "https://x.com/fardeen0424",
       "https://orcid.org/0009-0005-4765-1382",
       "https://pspac.info/index.php/dlbh/about/editorialTeam"
     ],
@@ -257,14 +232,14 @@ export default function SchemaMarkup() {
         "applicationCategory": "Artificial Intelligence Software / Large Language Model",
         "operatingSystem": "All",
         "url": "https://huggingface.co/neuralcrew/neutrino-instruct",
-        "description": "A 7-billion parameter open-source language model pre-trained and post-trained entirely from scratch to champion high-quality data curation."
+        "description": "An open 7-billion-parameter language model, pre-trained and post-trained from scratch by Fardeen NB, that tests how far careful curation of open data can go without frontier-scale compute."
       },
       {
         "@type": "SoftwareApplication",
         "name": "FX Pattern Pro",
         "applicationCategory": "Fintech / Quantitative Trading Software",
         "dateCreated": "2019",
-        "description": "Desktop-based fintech application developed to help quantitative traders identify algorithmic pattern structures."
+        "description": "A desktop application, founded by Fardeen NB in 2019, that helps quantitative traders detect algorithmic chart patterns."
       }
     ],
     "hasPart": [

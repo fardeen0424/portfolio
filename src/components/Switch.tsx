@@ -2,10 +2,66 @@
 
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { Portal as TooltipPortal } from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import "./Switch.css";
 
+const playThemeSwitchSound = (isToDark: boolean) => {
+  try {
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    
+    const osc = ctx.createOscillator();
+    const filter = ctx.createBiquadFilter();
+    const gainNode = ctx.createGain();
+    
+    osc.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    
+    const now = ctx.currentTime;
+    
+    if (isToDark) {
+      // Descending pitch sweep (Warm sunset sound)
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(320, now);
+      osc.frequency.exponentialRampToValueAtTime(120, now + 0.35);
+      
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(1000, now);
+      filter.frequency.exponentialRampToValueAtTime(150, now + 0.35);
+      
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.18, now + 0.05);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      
+      osc.start(now);
+      osc.stop(now + 0.35);
+    } else {
+      // Ascending pitch sweep (Bright sunrise chime)
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 0.28);
+      
+      filter.type = "highpass";
+      filter.frequency.setValueAtTime(100, now);
+      filter.frequency.exponentialRampToValueAtTime(800, now + 0.28);
+      
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.12, now + 0.04);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+      
+      osc.start(now);
+      osc.stop(now + 0.28);
+    }
+  } catch (e) {
+    console.error("Theme sound trigger error:", e);
+  }
+};
+
 export default function Switch() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,18 +77,27 @@ export default function Switch() {
     );
   }
 
-  const isDark = theme === "dark";
+  // resolvedTheme reflects what is on screen, including a system preference
+  const isDark = resolvedTheme === "dark";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? "dark" : "light");
+    const nextDark = e.target.checked;
+    setTheme(nextDark ? "dark" : "light");
+    playThemeSwitchSound(nextDark);
   };
 
   return (
-    <div className="theme-switch flex items-center justify-center">
+    <div className="theme-switch flex items-center justify-center transition-transform duration-150 ease-out active:scale-[0.96]">
+      {/* Hover or keyboard focus names the action; 80ms intent delay so a passing cursor
+          doesn't flash it (transitions.dev tooltip). */}
+      <Tooltip delayDuration={80}>
+        <TooltipTrigger asChild>
       <label className="theme-switch">
-        <input 
-          type="checkbox" 
-          className="theme-switch__checkbox" 
+        <input
+          type="checkbox"
+          role="switch"
+          className="theme-switch__checkbox"
+          aria-label="Dark mode"
           checked={isDark}
           onChange={handleChange}
         />
@@ -54,6 +119,25 @@ export default function Switch() {
           </div>
         </div>
       </label>
+        </TooltipTrigger>
+        {/* Portalled out of .theme-switch, whose unlayered em-based styles would otherwise
+            shrink the tooltip's type and strip its padding. */}
+        <TooltipPortal>
+        <TooltipContent
+          side="right"
+          sideOffset={10}
+          className="overflow-visible rounded-full bg-[var(--island-bg)] px-3 py-1.5 text-xs font-medium text-[var(--island-fg)] shadow-[var(--island-shadow)] duration-150 ease-out zoom-in-98 slide-in-from-left-1 data-[state=closed]:duration-[50ms] motion-reduce:animate-none"
+        >
+          {isDark ? "Switch to light mode" : "Switch to dark mode"}
+          {/* Soft cone: a triangle with a rounded tip, centred on the switch */}
+          <TooltipArrow asChild width={12} height={6}>
+            <svg viewBox="0 0 12 6" className="fill-[var(--island-bg)]" aria-hidden="true">
+              <path d="M0 0 L5 5.2 Q6 6 7 5.2 L12 0 Z" />
+            </svg>
+          </TooltipArrow>
+        </TooltipContent>
+        </TooltipPortal>
+      </Tooltip>
     </div>
   );
 }

@@ -5,6 +5,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,7 +66,36 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: #ff4300;
+  --chart-1: #ea4f1a;
+  --theme-orange: #ea4f1a;
+  /* Ruler scrollbar: ticks and spine use the card double-ring line (#D2D2D2 light,
+     #333333 dark), one step stronger than the ring fill; the orange is its focus outline */
+  --ruler-tick: var(--ring-card-line);
+  --ruler-progress: var(--theme-orange);
+  /* Fancy button, as AlignUI ships it: their orange-500 as the primary base, and
+     --shadow-fancy-buttons-primary (a 1px same-color ring plus a soft 1px drop). The source
+     shadow ink #0e121b is a tinted near-black; it is neutralized to #141414 at the same
+     alpha so every grey on the site stays equal-channel. */
+  --fancy-orange: #fa7319;
+  --shadow-fancy-buttons-primary: 0 1px 2px 0 #1414143d, 0 0 0 1px var(--fancy-orange);
+  --shadow-fancy-buttons-neutral: 0 1px 2px 0 #1c1c1c7a, 0 0 0 1px #262626;
+  --shadow-fancy-buttons-error: 0 1px 2px 0 #1414143d, 0 0 0 1px var(--destructive);
+  --shadow-fancy-buttons-stroke: 0 1px 3px 0 #1414141f, 0 0 0 1px var(--border);
+  /* Dynamic Island: softened graphite in light mode, inverted to a light surface in dark mode.
+     Text pairs: fg 13.1:1, muted 5.9:1 (light); fg 15.8:1, muted 6.3:1 (dark). */
+  --island-bg: oklch(0.3 0 0);
+  --island-fg: oklch(0.985 0 0);
+  --island-muted: oklch(0.74 0 0);
+  --island-chip: oklch(1 0 0 / 0.1);
+  --island-hover: oklch(1 0 0 / 0.06);
+  --island-outline: oklch(1 0 0 / 0.15);
+  /* Stocks-style "up" green: 6.8:1 on the graphite island */
+  --island-up: oklch(0.78 0.17 155);
+  --island-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    0 0 0 1px oklch(1 0 0 / 0.06),
+    0 2px 6px oklch(0 0 0 / 0.1),
+    0 12px 32px oklch(0 0 0 / 0.16);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
@@ -75,6 +108,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* Calibrated double-ring: reduced line intensity + wider 6px spread (1px hairline + 4px soft light-grey fill + 1px hairline) */
+  --ring-card-line: oklch(0.865 0 0); /* #D2D2D2 */
+  --ring-card-fill: oklch(0.955 0 0); /* #F0F0F0 */
+  --ring-card:
+    0 0 0 1px var(--ring-card-line),
+    0 0 0 5px var(--ring-card-fill),
+    0 0 0 6px var(--ring-card-line);
 }
 
 .dark {
@@ -96,7 +136,21 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: #ff4300;
+  --chart-1: #ea4f1a;
+  --theme-orange: #ea4f1a;
+  --island-bg: oklch(0.96 0 0);
+  --island-fg: oklch(0.21 0 0);
+  --island-muted: oklch(0.46 0 0);
+  --island-chip: oklch(0 0 0 / 0.07);
+  --island-hover: oklch(0 0 0 / 0.05);
+  --island-outline: oklch(0 0 0 / 0.1);
+  /* 4.9:1 on the light island */
+  --island-up: oklch(0.52 0.14 155);
+  --island-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.6),
+    0 0 0 1px oklch(0 0 0 / 0.06),
+    0 2px 8px oklch(0 0 0 / 0.3),
+    0 16px 40px oklch(0 0 0 / 0.45);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
@@ -109,6 +163,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* Double-ring: dark mode with reduced intensity and wider 6px spread */
+  --ring-card-line: oklch(0.32 0 0); /* #333333 */
+  --ring-card-fill: oklch(0.24 0 0); /* #1F1F1F */
+  --ring-card:
+    0 0 0 1px var(--ring-card-line),
+    0 0 0 5px var(--ring-card-fill),
+    0 0 0 6px var(--ring-card-line);
 }
 
 @layer base {
@@ -120,7 +181,21 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    font-family: var(--font-sans), sans-serif;
+    text-wrap: pretty;
+  }
+
+  .tabular-nums {
+    font-family: var(--font-mono), monospace !important;
   }
 
   /* Shiki dual theme support */
@@ -149,30 +224,37 @@
   }
 
   .prose h1 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-2xl! font-semibold! tracking-tight! leading-tight!;
   }
 
   .prose h2 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-xl! font-semibold! tracking-tight! leading-tight!;
   }
 
   .prose h3 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-lg! font-semibold! tracking-tight! leading-tight!;
   }
 
   .prose h4 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-base! font-medium! tracking-tight! leading-tight!;
   }
 
   .prose h5 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-base! font-medium! tracking-tight! leading-tight!;
   }
 
   .prose h6 {
+    font-family: var(--font-heading), sans-serif;
     @apply text-base! font-medium! tracking-tight! leading-tight!;
   }
 
   .prose a {
+    font-family: var(--font-sans), sans-serif;
     @apply text-primary underline underline-offset-4;
   }
 
@@ -238,6 +320,13 @@
 
 }
 
+/* Continuous (squircle) corners where supported; a plain border-radius everywhere else */
+@supports (corner-shape: squircle) {
+  .squircle {
+    corner-shape: squircle;
+  }
+}
+
 /* Hide scrollbars globally */
 ::-webkit-scrollbar {
   display: none !important;
@@ -293,4 +382,79 @@ html, body {
 .glow-border:hover {
   box-shadow: 0 0 16px 2px rgba(249, 115, 22, 0.08);
 }
-
+
+.word-item.word-revealed {
+  animation: reveal-glow-light 0.6s ease;
+}
+
+.dark .word-item.word-revealed {
+  animation: reveal-glow-dark 0.6s ease;
+}
+
+@keyframes reveal-glow-light {
+  0% {
+    color: #737373; /* neutral-500/600 default (muted-foreground) */
+  }
+  50% {
+    color: #ea4f1a; /* theme orange */
+  }
+  100% {
+    color: #737373; /* neutral-500/600 default (muted-foreground) */
+  }
+}
+
+@keyframes reveal-glow-dark {
+  0% {
+    color: #a3a3a3; /* neutral-400 default (muted-foreground) */
+  }
+  50% {
+    color: #ea4f1a; /* theme orange */
+  }
+  100% {
+    color: #a3a3a3; /* neutral-400 default (muted-foreground) */
+  }
+}
+
+@keyframes gemini-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  35% {
+    transform: translate(-50%, -50%) rotate(90deg); /* slow rotation */
+  }
+  45% {
+    transform: translate(-50%, -50%) rotate(270deg); /* sudden high-speed rotation */
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(315deg); /* slow drift */
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg); /* return */
+  }
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60%, 100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.5s infinite ease-in-out;
+}
+
+/* Looping decorative motion is opt-in */
+@media (prefers-reduced-motion: reduce) {
+  .animate-wave,
+  .glow-border:hover::before,
+  .word-item.word-revealed {
+    animation: none;
+  }
+}
+

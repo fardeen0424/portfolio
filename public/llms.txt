@@ -1,19 +1,23 @@
-# Fardeen NB Portfolio
+# Fardeen NB
 
-> Semantic index of Fardeen NB's AI research, publications, open-source projects, and professional background.
+> AI Engineer in Cincinnati, Ohio, who builds production LLM systems and trains models from scratch. Creator of Neutrino-Instruct, an open 7B-parameter language model pre-trained from scratch.
 
-Fardeen NB is an AI Scientist, Deep Learning Researcher, and Tech Entrepreneur specializing in pre-training and post-training large language models (LLMs) from scratch, transformer architectures, and model compression.
+Fardeen NB (Fardeen Noor Basha) founded FX Pattern Pro, a fintech application for quantitative traders, in 2019. He then moved into machine learning as an AI Engineer at Accenture, fine-tuning enterprise LLMs and building production retrieval and evaluation pipelines, and earned a Master of Engineering in Artificial Intelligence at the University of Cincinnati, where his research on attention and long-range dependencies in transformers led to peer-reviewed publications. He now builds production AI as a Full Stack AI Engineer at Insight Hospital and Medical Center, where he has shipped six AI features across the revenue cycle, and leads NeuralCrew, his independent research effort, where he pre-trained and post-trained Neutrino-Instruct from scratch.
 
-## Details & Sections
-- [Biography](https://fardeen.net/#about): Overview of Fardeen's journey from co-founding FX Pattern Pro at 18 to research on transformer mechanics.
-- [Work Experience](https://fardeen.net/#work): Career history including Insight Hospital (Full Stack AI Engineer), Accenture (AI Engineer), FX Pattern Pro (AI Co-founder), SAP, and Infosys.
-- [Pretrained LLM](https://fardeen.net/#model): Technical specifications of the Neutrino-Instruct-7B language model.
-- [Publications & Research](https://fardeen.net/#scholar): Citations and research index on transformer models, long-range dependencies, and emergent reasoning.
+## Sections
+- [Biography](https://fardeen.net/#about): From founding FX Pattern Pro to building production LLM systems.
+- [Work Experience](https://fardeen.net/#work): Full Stack AI Engineer at Insight Hospital and Medical Center (Jun 2025 – present); Artificial Intelligence Engineer at Accenture (Jun 2022 – Aug 2024).
+- [Education](https://fardeen.net/#education): Master of Engineering in Artificial Intelligence, University of Cincinnati (Aug 2024 – May 2026).
+- [Skills](https://fardeen.net/#skills): PyTorch, Hugging Face, JAX, Triton, CUDA, DeepSpeed, vLLM, Python, C++, Docker, Kubernetes and more.
+- [Certifications](https://fardeen.net/#certifications): Certified Artificial Intelligence Scientist (USAII); NVIDIA-Certified Associate in Generative AI LLMs and in Generative AI Multimodal.
+- [Pre-trained LLM](https://fardeen.net/#model): Neutrino-Instruct, a 7B-parameter model with a 32,768-token context, released under Apache-2.0 in GGUF and Safetensors formats, with live Hugging Face download counts.
+- [Publications & Research](https://fardeen.net/#scholar): Google Scholar citations and h-index for research on transformers and large language models.
+- [Contact](https://fardeen.net/#contact): Open to full-time AI engineering roles. Based in Cincinnati, OH, and open to relocation.
 
-## Verified Links
-- [Official Website](https://fardeen.net)
-- [Google Scholar](https://scholar.google.com/citations?user=RyRxxs8AAAAJ)
-- [Hugging Face](https://huggingface.co/neuralcrew/neutrino-instruct)
+## Links
+- [Website](https://fardeen.net)
+- [Neutrino-Instruct on Hugging Face](https://huggingface.co/neuralcrew/neutrino-instruct)
+- [ORCID](https://orcid.org/0009-0005-4765-1382)
 - [ResearchGate](https://www.researchgate.net/profile/Fardeen-Nb)
 - [GitHub](https://github.com/fardeen0424)
 - [LinkedIn](https://linkedin.com/in/fardeen0424)

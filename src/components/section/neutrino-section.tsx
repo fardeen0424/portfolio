@@ -1,14 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Download, Check, Copy } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { Icons } from "@/components/icons";
+import { estimateDownloadSeries, useModelDownloads } from "@/lib/model-downloads";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
@@ -22,11 +19,11 @@ const chartConfig = {
   },
   allTime: {
     label: "All Time",
-    color: "#ff4300",
+    color: "#ea4f1a",
   },
   month30d: {
     label: "Last 30 Days",
-    color: "#ff4300",
+    color: "#ea4f1a",
   },
 } satisfies ChartConfig;
 
@@ -39,39 +36,10 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("allTime");
 
-  const chartData = React.useMemo(() => {
-    const data = [];
-    const now = new Date();
-    const totalPoints = 30;
-    
-    const baseDaily = downloads30d / totalPoints;
-    const cumulativeStart = downloadsAllTime - downloads30d;
-
-    for (let i = totalPoints - 1; i >= 0; i--) {
-      const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
-      const dateStr = date.toISOString().split("T")[0];
-
-      const sinFactor = 0.6 + Math.sin((totalPoints - 1 - i) * 0.95) * 0.5;
-      const noise = (Math.cos((totalPoints - 1 - i) * 2.7) + 1) * 0.15;
-      const dailyVal = Math.round(baseDaily * Math.max(0.1, sinFactor + noise));
-
-      let sumOfPrevDaily = 0;
-      for (let j = totalPoints - 1; j > i; j--) {
-        const prevSinFactor = 0.6 + Math.sin((totalPoints - 1 - j) * 0.95) * 0.5;
-        const prevNoise = (Math.cos((totalPoints - 1 - j) * 2.7) + 1) * 0.15;
-        sumOfPrevDaily += baseDaily * Math.max(0.1, prevSinFactor + prevNoise);
-      }
-      
-      const cumulativeVal = Math.round(cumulativeStart + sumOfPrevDaily);
-
-      data.push({
-        date: dateStr,
-        month30d: dailyVal,
-        allTime: cumulativeVal,
-      });
-    }
-    return data;
-  }, [downloads30d, downloadsAllTime]);
+  const chartData = React.useMemo(
+    () => estimateDownloadSeries({ last30Days: downloads30d, allTime: downloadsAllTime }),
+    [downloads30d, downloadsAllTime]
+  );
 
   const total = React.useMemo(
     () => ({
@@ -82,14 +50,19 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
   );
 
   return (
-    <Card className="py-4 sm:py-0 border border-border bg-card text-card-foreground glow-border">
+    <div
+      // The Dynamic Island switches to its downloads sparkline when this card scrolls in.
+      id="downloads"
+      className="rounded-[14px] bg-card overflow-hidden"
+      style={{ boxShadow: "var(--ring-card)" }}
+    >
       <div className="flex flex-col items-stretch border-b border-border p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1.5 px-6 py-4 sm:py-0">
-          <div className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-            Download History
+        <div className="flex flex-1 flex-col justify-center gap-1.5 px-6 py-4 sm:py-5">
+          <div className="text-sm font-semibold text-foreground">
+            Download Analytics
           </div>
           <div className="text-xs text-muted-foreground">
-            Real-time tracking of Neutrino-7B downloads
+            Totals from the Hugging Face API. The daily curve is an estimate.
           </div>
         </div>
         <div className="flex border-t border-border sm:border-t-0">
@@ -98,13 +71,13 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
               <button
                 key={key}
                 data-active={activeChart === key}
-                className="flex flex-1 flex-col justify-center gap-1 border-r last:border-r-0 border-border px-6 py-4 text-left sm:border-l sm:border-r-0 sm:px-8 sm:py-5 data-[active=true]:bg-muted/40 transition-colors hover:bg-muted/20"
+                className="flex flex-1 flex-col justify-center gap-1 border-r last:border-r-0 border-border px-6 py-4 text-left sm:border-l sm:border-r-0 sm:px-8 sm:py-5 data-[active=true]:bg-muted/40 transition-[colors,transform] duration-150 active:scale-[0.98] hover:bg-muted/20 cursor-pointer"
                 onClick={() => setActiveChart(key)}
               >
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground font-mono">
                   {chartConfig[key].label}
                 </span>
-                <span className="text-lg font-medium font-sans tracking-tight text-neutral-800 dark:text-neutral-100 sm:text-xl">
+                <span className="text-lg font-medium font-sans tracking-tight tabular-nums text-foreground sm:text-xl">
                   {total[key].toLocaleString()}
                 </span>
               </button>
@@ -112,7 +85,7 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
           })}
         </div>
       </div>
-      <CardContent className="px-2 pt-4 sm:p-6">
+      <div className="px-2 pt-4 sm:p-6">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-[220px] w-full"
@@ -139,12 +112,12 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
                   day: "numeric",
                 });
               }}
-              className="text-[10px] font-normal text-muted-foreground"
+              className="text-[10px] font-normal text-muted-foreground font-mono"
             />
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  className="w-[160px] border border-border bg-background shadow-md rounded-lg font-normal"
+                  className="w-[150px] border border-border bg-background shadow-md rounded-lg font-normal"
                   nameKey="views"
                   labelFormatter={(value: any) => {
                     return new Date(value).toLocaleDateString("en-US", {
@@ -156,45 +129,54 @@ export function ChartLineInteractive({ downloads30d, downloadsAllTime }: ChartPr
                 />
               }
             />
-             <Line
+            <Line
               dataKey={activeChart}
               type="monotone"
-              stroke="#ff4300"
+              stroke="#ea4f1a"
               strokeWidth={2}
               dot={false}
             />
           </LineChart>
         </ChartContainer>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
 export default function NeutrinoSection() {
-  const [downloads30d, setDownloads30d] = useState<number>(40543);
-  const [downloadsAllTime, setDownloadsAllTime] = useState<number>(45840);
+  const { last30Days: downloads30d, allTime: downloadsAllTime } = useModelDownloads();
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    fetch(
-      "https://huggingface.co/api/models/neuralcrew/neutrino-instruct?expand[]=downloads&expand[]=downloadsAllTime"
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error("HF API error");
-        return res.json();
-      })
-      .then((data) => {
-        if (typeof data.downloads === "number") setDownloads30d(data.downloads);
-        if (typeof data.downloadsAllTime === "number")
-          setDownloadsAllTime(data.downloadsAllTime);
-      })
-      .catch(() => {});
-  }, []);
-
   const handleCopy = () => {
-    navigator.clipboard.writeText("ollama run fardeen0424/neutrino");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const textToCopy = "ollama run fardeen0424/neutrino";
+    if (typeof window !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch((err) => {
+          console.error("Clipboard copy failed: ", err);
+        });
+    } else {
+      // Fallback copy method for non-secure contexts
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error("Fallback copy failed: ", err);
+      }
+    }
   };
 
   const datasets = [
@@ -216,7 +198,7 @@ export default function NeutrinoSection() {
   const specs: { label: string; value: string }[] = [
     { label: "Parameters", value: "7 Billion" },
     { label: "Context Length", value: "32,768 tokens" },
-    { label: "Formats", value: "GGUF / Safetensors" },
+    { label: "Formats", value: "GGUF · Safetensors" },
     { label: "License", value: "Apache-2.0" },
     { label: "Architecture", value: "Custom (Neutrino)" },
     { label: "Language", value: "English" },
@@ -224,121 +206,137 @@ export default function NeutrinoSection() {
 
   return (
     <article className="w-full flex flex-col gap-6">
-      {/* Cover Image — natural aspect ratio */}
-      <div className="relative w-full rounded-xl overflow-hidden bg-muted">
-        <img
-          src="/neutrino.png"
-          alt="Neutrino-Instruct 7B language model cover"
-          className="w-full h-auto block"
-        />
-      </div>
-
-      {/* Title Row */}
-      <header className="flex items-start justify-between gap-4">
-        <div className="flex flex-col gap-1 min-w-0">
-          <h3 className="text-base md:text-lg font-semibold leading-none text-neutral-800 dark:text-neutral-200 flex items-center gap-2">
-            Neutrino-Instruct-7B
-            <a
-              href="https://huggingface.co/neuralcrew/neutrino-instruct"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowUpRight className="size-4" />
-            </a>
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            Instruction-tuned LLM · Pretrained from scratch by Fardeen NB
-          </p>
+      {/* Model Overview Card */}
+      <div
+        className="rounded-[14px] bg-card px-6 py-7 sm:px-8 sm:py-8"
+        style={{ boxShadow: "var(--ring-card)" }}
+      >
+        {/* Cover Image: concentric border radius with clean image outline */}
+        <div className="relative w-full rounded-2xl overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 mb-6 transition-transform duration-300 hover:scale-[1.005]">
+          <img
+            src="/neutrino.png"
+            alt="Neutrino-Instruct 7B language model cover"
+            className="w-full h-auto block rounded-[15px]"
+          />
         </div>
-        <a
-          href="https://huggingface.co/neuralcrew/neutrino-instruct"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-none inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium rounded-full border border-border bg-background text-foreground hover:bg-muted transition-colors"
-        >
-          <Icons.huggingface className="size-4" />
-          View on Hugging Face
-        </a>
-      </header>
 
-      {/* Description */}
-      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed text-justify">
-        Neutrino-Instruct is a 7-billion parameter language model pretrained
-        from scratch to champion open-source data curation over raw computing
-        scale. It features a custom architecture optimized for conversational
-        task performance, local execution via GGUF and Ollama, and complex
-        instruction-following capabilities across multiple turns.
-      </p>
-
-      {/* Model Specs */}
-      <div className="flex flex-col gap-3">
-        <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-          Model Specifications
-        </h4>
-        <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3">
-          {specs.map((spec) => (
-            <div key={spec.label} className="flex flex-col gap-0.5">
-              <dt className="text-xs text-muted-foreground">{spec.label}</dt>
-              <dd className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
-                {spec.value}
-              </dd>
+        {/* Header row: resume layout with right-aligned action */}
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+          <div className="flex flex-col gap-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <h3 className="text-xl sm:text-[22px] font-normal leading-tight tracking-tight text-foreground font-serif italic">
+                Neutrino-Instruct
+              </h3>
+              <a
+                href="https://huggingface.co/neuralcrew/neutrino-instruct"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center"
+                aria-label="View Neutrino-Instruct on Hugging Face"
+              >
+                <ArrowUpRight className="size-4" />
+              </a>
             </div>
-          ))}
-        </dl>
-      </div>
-
-      {/* Datasets */}
-      <div className="flex flex-col gap-3">
-        <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-          Pre-training Datasets
-        </h4>
-        <div className="flex flex-wrap gap-2 justify-start">
-          {datasets.map((ds) => (
-            <div
-              key={ds}
-              className="border bg-background border-border ring-2 ring-border/20 rounded-full h-8 w-fit px-4 flex items-center gap-2"
-            >
-              <span className="text-foreground text-sm font-medium">{ds}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Quick Start — terminal style with copy button */}
-      <div className="flex flex-col gap-3">
-        <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-          Quick Start
-        </h4>
-        <div className="relative group">
-          <pre className="font-mono text-sm bg-neutral-950 dark:bg-neutral-900 rounded-lg px-4 py-3 overflow-x-auto">
-            <code>
-              <span className="text-emerald-400">ollama</span>
-              <span className="text-neutral-200"> run </span>
-              <span className="text-sky-400">fardeen0424/neutrino</span>
-            </code>
-          </pre>
-          <button
-            onClick={handleCopy}
-            className="absolute top-2.5 right-2.5 p-1.5 rounded-md bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-neutral-200 transition-colors cursor-pointer"
-            aria-label="Copy command"
+            <p className="text-sm font-medium leading-snug text-muted-foreground font-sans">
+              7B instruction-tuned language model · Pre-trained from scratch
+            </p>
+          </div>
+          <a
+            href="https://huggingface.co/neuralcrew/neutrino-instruct"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-none self-start inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full border border-border bg-background text-foreground hover:bg-muted transition-[colors,transform] duration-150 active:scale-[0.96]"
           >
-            {copied ? (
-              <Check className="size-3.5 text-emerald-400" />
-            ) : (
-              <Copy className="size-3.5" />
-            )}
-          </button>
+            <Icons.huggingface className="size-4" />
+            <span>Hugging Face</span>
+          </a>
+        </div>
+
+        {/* Separation line */}
+        <div className="-mx-6 sm:-mx-8 border-b border-border my-6" />
+
+        {/* Narrative Description */}
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed text-pretty">
+          Neutrino-Instruct is a 7-billion-parameter language model that I pre-trained and post-trained from scratch. The project tests how far careful curation of open data can go without frontier-scale compute. It uses a custom architecture tuned for multi-turn conversation and instruction following, and it runs locally through GGUF and Ollama.
+        </p>
+
+        {/* Separation line */}
+        <div className="-mx-6 sm:-mx-8 border-b border-border my-6" />
+
+        {/* Model Specifications */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground font-sans">
+            Model Specifications
+          </h4>
+          <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+            {specs.map((spec) => (
+              <div key={spec.label} className="flex flex-col gap-0.5">
+                <dt className="text-xs text-muted-foreground font-mono">{spec.label}</dt>
+                <dd className="text-sm font-medium text-foreground font-mono tabular-nums">
+                  {spec.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Separation line */}
+        <div className="-mx-6 sm:-mx-8 border-b border-border my-6" />
+
+        {/* Quick Start (Local Inference) */}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground font-sans">
+              Quick Start (Local Inference)
+            </h4>
+            <span className="text-xs text-muted-foreground font-mono">Ollama CLI</span>
+          </div>
+          <div className="relative group">
+            <pre className="font-mono text-sm bg-neutral-950 dark:bg-neutral-900 border border-neutral-800 text-neutral-100 rounded-lg px-4 py-3 overflow-x-auto selection:bg-neutral-800">
+              <code>
+                <span className="text-emerald-400">ollama</span>
+                <span className="text-neutral-200"> run </span>
+                <span className="text-sky-400">fardeen0424/neutrino</span>
+              </code>
+            </pre>
+            <button
+              onClick={handleCopy}
+              className="absolute top-2.5 right-2.5 p-1.5 rounded-md bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-[colors,transform] duration-150 active:scale-[0.96] cursor-pointer"
+              aria-label="Copy Ollama run command"
+            >
+              {copied ? (
+                <Check className="size-3.5 text-emerald-400" />
+              ) : (
+                <Copy className="size-3.5" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Separation line */}
+        <div className="-mx-6 sm:-mx-8 border-b border-border my-6" />
+
+        {/* Pre-training Datasets */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground font-sans">
+            Training Datasets ({datasets.length} Curated Sources)
+          </h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-5 sm:gap-y-6">
+            {datasets.map((ds) => (
+              <div
+                key={ds}
+                className="rounded-full h-8 w-fit px-3.5 flex items-center gap-2 bg-card transition-[transform] duration-150 active:scale-[0.96] cursor-default"
+                style={{ boxShadow: "var(--ring-card)" }}
+              >
+                <span className="text-foreground text-[13px] font-medium font-mono">{ds}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Download Trend Graph - Interactive shadcn line chart */}
-      <div className="flex flex-col gap-3">
-        <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-          Download Trend
-        </h4>
-        <ChartLineInteractive downloads30d={downloads30d} downloadsAllTime={downloadsAllTime} />
-      </div>
+      {/* Download Trend Graph */}
+      <ChartLineInteractive downloads30d={downloads30d} downloadsAllTime={downloadsAllTime} />
     </article>
   );
 }

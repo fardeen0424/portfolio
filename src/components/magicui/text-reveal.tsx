@@ -282,10 +282,8 @@ const Word: FC<WordProps> = ({ children, isRevealed, className }) => {
   return (
     <span
       className={cn(
-        "transition-colors duration-300 font-normal",
-        isRevealed
-          ? "text-muted-foreground opacity-100"
-          : "text-[#eaeaea] dark:text-[#262626] opacity-100",
+        "transition-colors duration-300 font-normal text-muted-foreground",
+        isRevealed && "word-revealed",
         className
       )}
     >

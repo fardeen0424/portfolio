@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, Variants } from "motion/react";
+import { motion, useReducedMotion, Variants } from "motion/react";
 import { useMemo } from "react";
 
 interface BlurFadeTextProps {
@@ -29,9 +29,18 @@ const BlurFadeText = ({
   animateByCharacter = false,
   as: Component = "span",
 }: BlurFadeTextProps) => {
+  const reduceMotion = useReducedMotion();
   const defaultVariants: Variants = {
-    hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
-    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
+    // Reduced motion: opacity crossfade only, no slide or blur
+    hidden: reduceMotion
+      ? { opacity: 0 }
+      : { y: -yOffset, opacity: 0, filter: "blur(8px)" },
+    visible: {
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transitionEnd: { transform: "none", filter: "none" },
+    },
   };
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => Array.from(text), [text]);

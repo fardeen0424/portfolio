@@ -1,14 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
@@ -16,7 +9,9 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-8 md:size-10 rounded-full bg-muted flex-none" />
+      <div className="size-14 sm:size-16 rounded-2xl bg-muted flex items-center justify-center font-serif text-xl text-foreground/70 flex-none outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 select-none">
+        {alt?.charAt(0) || "W"}
+      </div>
     );
   }
 
@@ -24,62 +19,80 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="size-8 md:size-10 rounded-full overflow-hidden object-cover flex-none"
+      width={64}
+      height={64}
+      className="size-14 sm:size-16 rounded-2xl overflow-hidden object-cover flex-none outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
       onError={() => setImageError(true)}
     />
   );
 }
 
-export default function WorkSection() {
+/** Parses resume description lines into bulleted list per better-writing standards */
+function WorkDescription({ text }: { text: string }) {
+  const lines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
   return (
-    <Accordion type="single" collapsible className="w-full grid gap-10">
-      {DATA.work.map((work) => (
-        <AccordionItem
-          key={work.company}
-          value={work.company}
-          className="w-full border-b-0 grid gap-2"
-        >
-          <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
-            <div className="flex items-center gap-x-3 justify-between w-full text-left">
-              <div className="flex items-center gap-x-3 flex-1 min-w-0">
-                <LogoImage src={work.logoUrl} alt={work.company} />
-                <div className="flex-1 min-w-0 gap-1 flex flex-col">
-                  <h3 className="text-base md:text-lg font-semibold leading-none text-neutral-800 dark:text-neutral-200 flex items-center gap-2">
-                    {work.company}
-                    <span className="relative inline-flex items-center w-3.5 h-3.5">
-                      <ChevronRight
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-300 ease-out",
-                          "translate-x-0 opacity-0",
-                          "group-hover:translate-x-1 group-hover:opacity-100",
-                          "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0"
-                        )}
-                      />
-                      <ChevronDown
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-200",
-                          "opacity-0 rotate-0",
-                          "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
-                        )}
-                      />
-                    </span>
-                  </h3>
-                  <h4 className="font-sans text-sm md:text-base text-muted-foreground font-medium leading-none">
-                    {work.title}
-                  </h4>
-                  <p className="text-xs md:text-sm tabular-nums text-muted-foreground/80 leading-none">
-                    {work.start} - {work.end ?? "Present"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent className="p-0 ml-11 md:ml-13 text-sm sm:text-base text-muted-foreground mt-2 leading-relaxed">
-            {work.description}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <ul className="space-y-3 list-none p-0 m-0">
+      {lines.map((line, i) => {
+        const content = line.replace(/^[•→\-\*]\s*/, "");
+        return (
+          <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground font-normal text-pretty">
+            <span
+              className="mt-[7px] size-1.5 rounded-full bg-foreground/45 shrink-0"
+              aria-hidden="true"
+            />
+            <span className="flex-1">{content}</span>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
+export default function WorkSection() {
+  return (
+    <div className="w-full flex flex-col gap-6">
+      {DATA.work.map((work) => (
+        <div
+          key={work.company}
+          className="rounded-[14px] bg-card px-6 py-7 sm:px-8 sm:py-8"
+          style={{ boxShadow: "var(--ring-card)" }}
+        >
+          {/* Header row: resume layout with right-aligned timeline */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            <LogoImage src={work.logoUrl} alt={work.company} />
+            <div className="flex-1 min-w-0 flex flex-col gap-1">
+              {/* Top line: Institution on left, Timeline on right */}
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4">
+                <h3 className="text-xl sm:text-[22px] font-normal leading-tight tracking-tight text-foreground font-serif italic">
+                  {work.company}
+                </h3>
+                <div className="text-sm font-medium text-foreground sm:text-right shrink-0">
+                  {work.start} - {work.end ?? "Present"}
+                </div>
+              </div>
+              {/* Second line: Role on left, Location on right */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 sm:gap-4 text-sm">
+                <h4 className="font-medium text-muted-foreground font-sans">
+                  {work.title}
+                </h4>
+                <span className="text-xs text-muted-foreground/80 font-mono tabular-nums">
+                  {work.location}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Full-width separation line touching both ends */}
+          <div className="-mx-6 sm:-mx-8 border-b border-border my-6" />
+
+          {/* Resume bullet list */}
+          <WorkDescription text={work.description} />
+        </div>
+      ))}
+    </div>
+  );
+}

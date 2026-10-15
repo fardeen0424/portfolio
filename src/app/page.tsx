@@ -4,141 +4,186 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import NeutrinoSection from "@/components/section/neutrino-section";
 import WorkSection from "@/components/section/work-section";
-import { ArrowUpRight } from "lucide-react";
-import { TextReveal } from "@/components/magicui/text-reveal";
 import EducationSection from "@/components/section/education-section";
+import CertificationsSection from "@/components/section/certifications-section";
 import ScholarSection from "@/components/section/scholar-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
+/** Option 3: Pure Architectural Whitespace: High-contrast editorial typography with generous rhythm */
+function SectionHeading({ title }: { title: string }) {
+  return (
+    <div className="pt-4 pb-1">
+      <h2 className="text-2xl sm:text-3xl font-normal text-foreground font-serif italic tracking-tight">
+        {title}
+      </h2>
+    </div>
+  );
+}
+
 export default function Page() {
   return (
-    <main className="min-h-dvh flex flex-col gap-14 relative">
+    <main className="min-h-dvh flex flex-col gap-16 relative">
+
+      {/* ── Hero ──────────────────────────────────── */}
       <section id="hero">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
-            <div className="gap-2 flex flex-col order-2 md:order-1">
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-2xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-3xl lg:text-4xl"
-                yOffset={8}
-                text="I'm Fardeen NB"
-                as="h1"
-              />
-              <BlurFadeText
-                className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
-            </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
-            </BlurFade>
-          </div>
+        <div className="flex flex-col gap-3">
+          <BlurFade delay={BLUR_FADE_DELAY} className="mb-2">
+            <Avatar
+              className="size-20 sm:size-24 rounded-full"
+              style={{ boxShadow: "var(--ring-card)" }}
+            >
+              <AvatarImage alt="Portrait of Fardeen NB" src={DATA.avatarUrl} className="object-cover rounded-full" />
+              <AvatarFallback className="rounded-full">{DATA.initials}</AvatarFallback>
+            </Avatar>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-foreground leading-[1.15] tracking-[-0.02em] font-serif italic text-balance">
+              I&apos;m Fardeen NB
+            </h1>
+          </BlurFade>
+          <BlurFadeText
+            className="text-muted-foreground max-w-[520px] text-sm md:text-base leading-relaxed text-pretty"
+            delay={BLUR_FADE_DELAY}
+            text={DATA.description}
+          />
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── About ─────────────────────────────────── */}
       <section id="about">
-        <TextReveal title="Biography">
-          {DATA.summary}
-        </TextReveal>
+        <BlurFade delay={BLUR_FADE_DELAY * 3} inView>
+          <div className="flex flex-col gap-6">
+            <SectionHeading title="Biography" />
+            <div className="flex flex-col gap-4">
+              {DATA.summary.split("\n\n").map((para, idx) => (
+                <p key={idx} className="text-sm md:text-base leading-relaxed text-muted-foreground font-normal text-pretty max-w-[600px]">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+        </BlurFade>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── Work Experience ───────────────────────── */}
       <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-10">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">Work Experience</h2>
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Work Experience" />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
             <WorkSection />
           </BlurFade>
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── Education ─────────────────────────────── */}
       <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-10">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">Education</h2>
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Education" />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 8}>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
             <EducationSection />
           </BlurFade>
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── Skills ────────────────────────────────── */}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-8">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">Skills</h2>
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Skills & Technologies" />
           </BlurFade>
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-x-4 gap-y-5 sm:gap-y-6">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-full h-8 w-fit px-4 flex items-center gap-2">
-                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
+              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 5 + id * 0.03} inView>
+                <div
+                  className="rounded-full h-8 w-fit px-3.5 flex items-center gap-2 bg-card transition-[transform] duration-150 active:scale-[0.96] cursor-default"
+                  style={{ boxShadow: "var(--ring-card)" }}
+                >
+                  {skill.icon && <skill.icon className="size-3.5 rounded overflow-hidden object-contain" />}
+                  <span className="text-foreground text-[13px] font-medium font-mono">{skill.name}</span>
                 </div>
               </BlurFade>
             ))}
           </div>
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
-      <section id="model">
-        <div className="flex min-h-0 flex-col gap-y-10">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">Pretrained LLM</h2>
+
+      {/* ── Certifications ────────────────────────── */}
+      <section id="certifications">
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Certifications" />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 12}>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
+            <CertificationsSection />
+          </BlurFade>
+        </div>
+      </section>
+
+      {/* ── Pre-trained LLM ───────────────────────── */}
+      <section id="model">
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Pre-trained LLM" />
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
             <NeutrinoSection />
           </BlurFade>
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── Publications ──────────────────────────── */}
       <section id="scholar">
-        <div className="flex min-h-0 flex-col gap-y-10">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">Publications & Research</h2>
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Publications & Research" />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
             <ScholarSection />
           </BlurFade>
         </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
+
+      {/* ── Contact ───────────────────────────────── */}
       <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
-        </BlurFade>
+        <div className="flex min-h-0 flex-col gap-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
+            <SectionHeading title="Get in Touch" />
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
+            <ContactSection />
+          </BlurFade>
+        </div>
       </section>
-      <hr className="border-0 border-t-[1.5px] border-dashed border-neutral-500/40 dark:border-[#5e5e5e] -mx-6" />
-      <footer className="mt-8 flex flex-col gap-6 pb-0 -mb-20 sm:-mb-24">
+
+      {/* ── Footer ────────────────────────────────── */}
+      <footer className="mt-4 flex flex-col gap-6 pb-0 -mb-20 sm:-mb-24">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground pt-2">
           <p>© {new Date().getFullYear()} Fardeen NB. All rights reserved.</p>
           <div className="flex gap-4">
-            {Object.entries(DATA.contact.social).map(([name, social]) => (
+            {Object.entries(DATA.contact.social).map(([key, social]) => (
               <a
-                key={name}
+                key={key}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
+                className="hover:text-foreground transition-colors duration-150"
               >
-                {name}
+                {social.name}
               </a>
             ))}
           </div>
         </div>
-        <div className="w-full overflow-hidden select-none pointer-events-none mt-4 flex justify-center">
-          <div className="text-[4.5rem] sm:text-[7rem] md:text-[9.5rem] lg:text-[11rem] font-bold tracking-tight text-neutral-200 dark:text-neutral-800 text-center leading-none w-full font-sans">
-            Fardeen
+        <div className="w-full overflow-hidden select-none pointer-events-none mt-4 flex justify-center" aria-hidden="true">
+          <div className="text-[4rem] sm:text-[5.8rem] md:text-[8rem] lg:text-[9.2rem] font-normal italic tracking-tight text-neutral-200 dark:text-neutral-800 text-center leading-none w-full font-serif">
+            FARDEEN
           </div>
         </div>
       </footer>

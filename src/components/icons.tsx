@@ -253,7 +253,7 @@ export const Icons = {
   jax: (props: IconProps) => (
     <svg viewBox="0 0 451 260.81" {...props}>
       <title>JAX</title>
-      <g stroke="#dce0df" strokeLinejoin="round">
+      <g stroke="#dedede" strokeLinejoin="round">
         <polygon fill="#5e97f6" points="50.5 130.4 25.5 173.71 75.5 173.71 100.5 130.4 50.5 130.4"/>
         <polygon fill="#5e97f6" points="0.5 217.01 25.5 173.71 75.5 173.71 50.5 217.01 0.5 217.01"/>
         <polygon fill="#5e97f6" points="125.5 173.71 75.5 173.71 50.5 217.01 100.5 217.01 125.5 173.71"/>

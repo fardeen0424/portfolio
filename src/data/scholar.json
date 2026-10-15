@@ -1,11 +1,11 @@
 {
-  "totalCitations": 124,
-  "hIndex": 8,
-  "i10Index": 8,
+  "totalCitations": 302,
+  "hIndex": 12,
+  "i10Index": 16,
   "citationHistory": [
     {
       "year": "2021",
-      "citations": 3
+      "citations": 15
     },
     {
       "year": "2022",
@@ -21,19 +21,75 @@
     },
     {
       "year": "2025",
-      "citations": 24
+      "citations": 57
     },
     {
       "year": "2026",
-      "citations": 30
+      "citations": 166
     }
   ],
   "publications": [
+    {
+      "title": "THE ATTENTION DISTANCE PROBLEM: THEORETICAL ANALYSIS OF LONG-RANGE DEPENDENCIES IN TRANSFORMERS, Vol. 52 No. 2 (2024): April-June 2024, Power System Protection and Control",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "ISSN-1674-3415, https://pspac. info/index. php/dlbh/article/view/313, 0",
+      "citations": "37",
+      "year": ""
+    },
+    {
+      "title": "Artificial Intelligence-Based Real-Time Vision System for Autonomous Vehicles with Lane and Object Awareness",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Journal of Information Systems Engineering &amp; Management 8 (1), 2023",
+      "citations": "30",
+      "year": "2023"
+    },
+    {
+      "title": "A Comparative Analysis of Dimension Reduction Techniques for High-Dimensional Classification Tasks",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "International Journal of Intelligent Systems and Applications in Engineering …, 2022",
+      "citations": "28",
+      "year": "2022"
+    },
+    {
+      "title": "Engineering LLMs Design, Optimization, and Deployment",
+      "authors": "F Nb",
+      "journal": "",
+      "citations": "26",
+      "year": "2024"
+    },
     {
       "title": "THE ATTENTION DISTANCE PROBLEM: THEORETICAL ANALYSIS OF LONG-RANGE DEPENDENCIES IN TRANSFORMERS",
       "authors": "NB Fardeen, NB Sameer",
       "journal": "Dianli Xitong Baohu yu Kongzhi/Power System Protection and Control 52 (2 …, 2024",
       "citations": "20",
+      "year": "2024"
+    },
+    {
+      "title": "AUTOMATIC CLASSIFICATION OF LEUKEMIA CELLS VIA FLOW CYTOMETRY AND MITRAL REGURGITATION DETECTION USING MACHINE LEARNING ALGORITHMS, Vol. 49 No. 2 (2021): April-June 2021 …",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "ISSN-1674-3415, https://pspac. info/index. php/dlbh/article/view/361, 0",
+      "citations": "20",
+      "year": ""
+    },
+    {
+      "title": "BEYOND THE PIXEL: ASSESSING REAL-TIME OBJECT DETECTION MODELS IN LOW-VISIBILITY AUTONOMOUS DRIVING ENVIRONMENTS, Vol. 53 No. 4 (2025): October-December 2025, Power System …",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "ISSN-1674-3415, https://pspac. info/index. php/dlbh/article/view/371, 0",
+      "citations": "20",
+      "year": ""
+    },
+    {
+      "title": "The Fragility of Al Reasoning Systems.",
+      "authors": "NB Fardeen",
+      "journal": "",
+      "citations": "15",
+      "year": "2026"
+    },
+    {
+      "title": "Engineering LLMs Design, Optimization, and Deployment",
+      "authors": "NB Fardeen",
+      "journal": "",
+      "citations": "15",
       "year": "2024"
     },
     {
@@ -44,18 +100,18 @@
       "year": "2023"
     },
     {
+      "title": "Automatic Classification of Leukemia Cells via Flow Cytometry and Mitral Regurgitation Detection Using Machine Learning Algorithms",
+      "authors": "NB Fardeen, NB Sameer",
+      "journal": "Power System Protection and Control 49 (2), 20-34, 2021",
+      "citations": "15",
+      "year": "2021"
+    },
+    {
       "title": "Inside Large Language Models From Tokens to Intelligence.",
       "authors": "NB Fardeen",
       "journal": "",
       "citations": "13",
       "year": "2025"
-    },
-    {
-      "title": "The Fragility of AI Reasoning Systems",
-      "authors": "NB Fardeen",
-      "journal": "Geh Press, 2026",
-      "citations": "12",
-      "year": "2026"
     },
     {
       "title": "Prompt Engineering Paradigms: Optimizing LLM Performance Through Strategic Input Design",
@@ -86,46 +142,18 @@
       "year": ""
     },
     {
-      "title": "Artificial Intelligence-Based Real-Time Vision System for Autonomous Vehicles with Lane and Object Awareness",
-      "authors": "NB Fardeen, NB Sameer",
-      "journal": "Journal of Information Systems Engineering &amp; Management 8 (1), 2023",
-      "citations": "6",
-      "year": "2023"
-    },
-    {
       "title": "EffiLLM: A Comprehensive Framework for Benchmarking and Optimizing Large Language Models in Resource-Constrained Environments",
       "authors": "NB Fardeen, NB Sameer",
       "journal": "",
-      "citations": "5",
+      "citations": "6",
       "year": "2024"
     },
     {
-      "title": "A Comparative Analysis of Dimension Reduction Techniques for High-Dimensional Classification Tasks",
+      "title": "BEYOND GOODHART&#39;S LAW: ANALYZING AND MITIGATING PERSUASIVE REWARD HACKING IN LLM-AS-A-JUDGE REINFORCEMENT LEARNING LOOPS",
       "authors": "NB Fardeen, NB Sameer",
-      "journal": "International Journal of Intelligent Systems and Applications in Engineering …, 2022",
-      "citations": "3",
-      "year": "2022"
-    },
-    {
-      "title": "Automatic Classification of Leukemia Cells via Flow Cytometry and Mitral Regurgitation Detection Using Machine Learning Algorithms",
-      "authors": "NB Fardeen, NB Sameer",
-      "journal": "Power System Protection and Control 49 (2), 20-34, 2021",
-      "citations": "3",
-      "year": "2021"
-    },
-    {
-      "title": "The Fragility of Al Reasoning Systems.",
-      "authors": "NB Fardeen",
-      "journal": "",
+      "journal": "Power System Protection and Control 54 (1), 940-950, 2026",
       "citations": "",
       "year": "2026"
-    },
-    {
-      "title": "BEYOND THE PIXEL: ASSESSING REAL-TIME OBJECT DETECTION MODELS IN LOW-VISIBILITY AUTONOMOUS DRIVING ENVIRONMENTS",
-      "authors": "NB Fardeen, NB Sameer",
-      "journal": "Power System Protection and Control 53 (4), 502-514, 2025",
-      "citations": "",
-      "year": "2025"
     },
     {
       "title": "Rethinking Intelligence in Machines.",
@@ -133,13 +161,6 @@
       "journal": "",
       "citations": "",
       "year": "2025"
-    },
-    {
-      "title": "Engineering LLMs Design, Optimization, and Deployment",
-      "authors": "NB Fardeen",
-      "journal": "",
-      "citations": "",
-      "year": "2024"
     }
   ]
 }

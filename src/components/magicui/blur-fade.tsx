@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, Variants } from "motion/react";
+import { AnimatePresence, motion, useInView, useReducedMotion, Variants } from "motion/react";
 import { useRef } from "react";
 
 interface BlurFadeProps {
@@ -34,9 +34,18 @@ const BlurFade = ({
     ...(inViewMargin ? { margin: inViewMargin as any } : {})
   });
   const isInView = !inView || inViewResult;
+  const reduceMotion = useReducedMotion();
   const defaultVariants: Variants = {
-    hidden: { y: -yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: 0, opacity: 1, filter: `blur(0px)` },
+    // Reduced motion: opacity crossfade only, no slide or blur
+    hidden: reduceMotion
+      ? { opacity: 0 }
+      : { y: -yOffset, opacity: 0, filter: `blur(${blur})` },
+    visible: {
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transitionEnd: { transform: "none", filter: "none" },
+    },
   };
   const combinedVariants = variant || defaultVariants;
   return (

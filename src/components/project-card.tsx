@@ -57,17 +57,12 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "flex flex-col h-full border border-neutral-200/60 dark:border-neutral-800/40 rounded-xl overflow-hidden cursor-pointer bg-background transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]",
         className
       )}
     >
       <div className="relative shrink-0">
-        <Link
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
+        <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className="block relative w-full h-48 overflow-hidden">
           {video ? (
             <video
               src={video}
@@ -75,13 +70,15 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className="w-full h-full object-cover"
             />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
-            <div className="w-full h-48 bg-muted" />
+            <div className="w-full h-full bg-muted" />
           )}
+          {/* Subtle outline overlay for depth (Principle 11) */}
+          <div className="absolute inset-0 pointer-events-none border border-black/10 dark:border-white/15" />
         </Link>
         {links && links.length > 0 && (
           <div className="absolute top-2 right-2 flex flex-wrap gap-2">
