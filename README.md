@@ -94,7 +94,7 @@ Books: *Inside Large Language Models: From Tokens to Intelligence* (2025), *Reth
 - Hugging Face: [neuralcrew](https://huggingface.co/neuralcrew)
 - ORCID: [0009-0005-4765-1382](https://orcid.org/0009-0005-4765-1382)
 - GitHub: [fardeen0424](https://github.com/fardeen0424)
-- LinkedIn: [fardeen0424](https://linkedin.com/in/fardeen0424)
+- LinkedIn: [fardeennb](https://www.linkedin.com/in/fardeennb/)
 - Email: fardeen0424@gmail.com
 
 ---

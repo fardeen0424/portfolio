@@ -221,7 +221,7 @@ export default function SchemaMarkup() {
       "https://huggingface.co/neuralcrew/neutrino-instruct",
       "https://www.researchgate.net/profile/Fardeen-Nb",
       "https://github.com/fardeen0424",
-      "https://linkedin.com/in/fardeen0424",
+      "https://www.linkedin.com/in/fardeennb/",
       "https://orcid.org/0009-0005-4765-1382",
       "https://pspac.info/index.php/dlbh/about/editorialTeam"
     ],
